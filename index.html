@@ -12,8 +12,9 @@
 			crossorigin="anonymous"
 		/>
 		<link rel="stylesheet" href="src/css/style.css" />
+		<link rel="stylesheet" href="src/css/footer.css" />
 	</head>
-	<body id="body" class="container-xxl position-relative">
+	<body class="container-xxl position-relative">
 		<nav class="navbar bg-body-tertiary navbar-expand-lg">
 			<div class="container-fluid">
 				<span class="navbar-brand mb-0 h1 brand">CardForger</span>
@@ -104,7 +105,7 @@
 				<p class="h1">
 					<strong>Be Prepared For The Mountains and Beyond!</strong>
 				</p>
-				<span
+				<span class="z-"
 					>scroll down
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -214,6 +215,7 @@
 				<div class="section-text-content">
 					<div
 						class="hero-content d-flex flex-column gap-2 flex-wrap flex-shrink-0 p-4"
+						id="featuredscroll"
 					>
 						<span class="d-flex blockquote position-relative">
 							<span class="accent-text position-absolute">01</span>
@@ -230,7 +232,6 @@
 							you – novice, moderate, advanced moderate, expert, or expert
 							backpacker?
 						</p>
-						<span>scroll down</span>
 					</div>
 				</div>
 				<img src="/01.png" alt="" class="" />
@@ -257,7 +258,6 @@
 							you – novice, moderate, advanced moderate, expert, or expert
 							backpacker?
 						</p>
-						<span>scroll down</span>
 					</div>
 				</div>
 				<img src="/02.png" alt="" class="" />
@@ -284,22 +284,65 @@
 							you – novice, moderate, advanced moderate, expert, or expert
 							backpacker?
 						</p>
-						<span>scroll down</span>
 					</div>
 				</div>
 				<img src="/03.png" alt="" class="" />
 			</section>
 		</div>
 
+		<footer class="d-flex align-self-stretch">
+			<ul class="flex-column footer-brand flex-fill">
+				<li class="">
+					<a class="footer-brand-name" href="#"
+						>Card Forger Service and limited.</a
+					>
+				</li>
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi a
+					molestiae repellat ad. Laudantium perferendis vero consectetur.
+					Praesentium, esse est.
+				</p>
+				<code> Copyright 2023 MNTN, Inc. Terms & Privacy</code>
+			</ul>
+			<div>
+				<ul class="flex-column">
+					<li class="">
+						<a class="" aria-current="page" href="#">Active</a>
+					</li>
+					<li class="">
+						<a class="" href="#">Link</a>
+					</li>
+					<li class="">
+						<a class="" href="#">Link</a>
+					</li>
+					<li class="">
+						<a class="" href="#">Link</a>
+					</li>
+				</ul>
+			</div>
+			<div>
+				<ul class="flex-column">
+					<li class="">
+						<a class="" aria-current="page" href="#">Active</a>
+					</li>
+					<li class="">
+						<a class="" href="#">Link</a>
+					</li>
+					<li class="">
+						<a class="" href="#">Link</a>
+					</li>
+					<li class="">
+						<a class="" href="#">Link</a>
+					</li>
+				</ul>
+			</div>
+		</footer>
+
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 			crossorigin="anonymous"
 		></script>
-		<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js">
-			const lenis = new Lenis({
-			  prevent: (node) => node.id === 'body',
-			})
-		</script>
+		<script src="./src/js/main.js"></script>
 	</body>
 </html>

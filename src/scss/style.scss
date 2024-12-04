@@ -1,24 +1,26 @@
+// Global presets styling
+
 // colors
 $bg-primary: #0b1d26;
 $color-primary: #fff;
 $accent-color: #fbd784;
-$hero-bg-image-1: "/HG.png";
-$hero-bg-image-2: "/MG.png";
-$hero-bg-image-3: "/VG.png";
-// font-family: "Gilroy-Bold", sans-serif;
-// font-family: "Gilroy-Heavy", sans-serif;
-// font-family: "Gilroy-Light", sans-serif;
-// font-family: "Gilroy-Medium", sans-serif;
-// font-family: "Gilroy-Regular", sans-serif;
+
 @import url("https://fonts.cdnfonts.com/css/gilroy-bold");
 $global-font: Gilroy-Regular;
 $global-font-blocky: Gilroy-Bold;
-// creates gap-0 to gap-96
+
 @for $i from 0 through 96 {
 	.gap-#{$i} {
 		gap: #{$i * 0.25}rem;
 	}
 }
+
+@mixin underlineDecorate {
+	color: #fff;
+	text-decoration: underline;
+	text-underline-offset: 10px;
+}
+
 .h1,
 .h2,
 .h3,
@@ -27,12 +29,43 @@ $global-font-blocky: Gilroy-Bold;
 .h1 strong {
 	font-family: inter !important;
 }
-// Global presets styling
 *,
 *::after,
 *::after {
 	//
+	text-decoration: none;
 	font-family: $global-font;
+	list-style: none;
+}
+
+// body layout
+::-webkit-scrollbar {
+	width: 3px;
+	background-color: rgba($color: $bg-primary, $alpha: 0);
+}
+::-webkit-scrollbar-thumb {
+	background-color: rgba($color: #fff, $alpha: 0.5);
+	border-radius: 10px;
+}
+
+body {
+	background: $bg-primary;
+	color: $color-primary;
+	margin-block: auto;
+	--bs-gutter-x: 0 !important;
+	padding: {
+		left: 1rem;
+		right: 1rem;
+	}
+	min-height: 100dvh;
+	min-height: 100vh;
+	background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+		url(/BG.png) {
+		position: top;
+		size: contain;
+		repeat: no-repeat;
+		color: $bg-primary;
+	}
 }
 
 // Custom NavBar
@@ -65,43 +98,26 @@ $global-font-blocky: Gilroy-Bold;
 .nav-links a {
 	margin-left: 8px;
 }
+
 :is(.nav-links a, .nav-account span, .brand):hover {
-	color: #fff;
-	text-decoration: underline;
-	text-underline-offset: 10px;
+	@include underlineDecorate();
 }
-// body layout
-::-webkit-scrollbar {
-	width: 3px;
-	background-color: rgba($color: $bg-primary, $alpha: 0);
-}
-::-webkit-scrollbar-thumb {
-	background-color: rgba($color: #fff, $alpha: 0.5);
-	border-radius: 10px;
-}
-body {
-	background: $bg-primary;
-	color: $color-primary;
-	margin-block: auto;
-	--bs-gutter-x: 0 !important;
-	padding: {
-		left: 1rem;
-		right: 1rem;
-	}
-	min-height: 100dvh;
-	min-height: 100vh;
-	background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
-		url(/BG.png) {
-		position: top;
-		size: contain;
-		repeat: no-repeat;
-		color: $bg-primary;
-	}
-}
+
 .navbar-brand {
 	font-size: larger;
 }
 
+.navbar-nav {
+	flex-grow: 1;
+}
+
+.navbar-collapse {
+	width: fit-content;
+	flex-grow: 0;
+	flex-basis: unset;
+}
+
+// Hero section
 .hero {
 	min-height: 75dvh;
 	min-height: 75vh;
@@ -145,14 +161,13 @@ body {
 	max-width: 25ch;
 }
 
-// featured section
-
+// Featured section
 .featured {
 	background: $bg-primary;
 	min-height: 100vh;
-	// margin-top: calc(100vw - 100vh + 100px);
 	margin-top: 400px;
 	padding-top: 50px;
+	padding-bottom: 150px;
 }
 .featured > section {
 	margin-top: 200px;
@@ -185,18 +200,10 @@ body {
 		weight: 600;
 	}
 }
-.navbar-nav {
-	flex-grow: 1;
-}
 
-.navbar-collapse {
-	width: fit-content;
-	flex-grow: 0;
-	flex-basis: unset;
-}
 @media screen and (max-width: 830px) {
 	body {
-		background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+		background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
 			url(/MobileBG.png) {
 			position: top;
 			size: contain;
@@ -204,13 +211,36 @@ body {
 			color: $bg-primary;
 		}
 	}
+
+	.navbar-nav {
+		flex-grow: 0;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		background-color: $bg-primary;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100vw;
+		height: fit-content;
+		.navbar-brand {
+			display: flex;
+			flex-direction: column;
+			gap: 2rem;
+			align-items: flex-start;
+			padding: 5rem;
+		}
+	}
+
 	.hero {
 		min-height: fit-content;
 		flex-wrap: wrap;
+
+		.hero-content {
+			gap: 2rem !important;
+		}
 	}
-	.hero-content {
-		order: 1;
-	}
+
 	.hero > .scroller {
 		display: none;
 	}
@@ -219,11 +249,5 @@ body {
 	}
 	.nav-account-text {
 		display: none;
-	}
-	.account-icon {
-		// margin-right: 1rem;
-	}
-	.navbar-nav {
-		flex-grow: 0;
 	}
 }

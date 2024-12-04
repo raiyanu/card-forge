@@ -399,7 +399,35 @@
 *,
 *::after,
 *::after {
+  text-decoration: none;
   font-family: Gilroy-Regular;
+  list-style: none;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  background-color: rgba(11, 29, 38, 0);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+}
+
+body {
+  background: #0b1d26;
+  color: #fff;
+  margin-block: auto;
+  --bs-gutter-x: 0 !important;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  min-height: 100dvh;
+  min-height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(/BG.png);
+  background-position: top;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #0b1d26;
 }
 
 .navbar {
@@ -438,34 +466,18 @@
   text-underline-offset: 10px;
 }
 
-::-webkit-scrollbar {
-  width: 3px;
-  background-color: rgba(11, 29, 38, 0);
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 10px;
-}
-
-body {
-  background: #0b1d26;
-  color: #fff;
-  margin-block: auto;
-  --bs-gutter-x: 0 !important;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  min-height: 100dvh;
-  min-height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(/BG.png);
-  background-position: top;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-color: #0b1d26;
-}
-
 .navbar-brand {
   font-size: larger;
+}
+
+.navbar-nav {
+  flex-grow: 1;
+}
+
+.navbar-collapse {
+  width: fit-content;
+  flex-grow: 0;
+  flex-basis: unset;
 }
 
 .hero {
@@ -518,6 +530,7 @@ body {
   min-height: 100vh;
   margin-top: 400px;
   padding-top: 50px;
+  padding-bottom: 150px;
 }
 
 .featured > section {
@@ -551,30 +564,39 @@ body {
   font-weight: 600;
 }
 
-.navbar-nav {
-  flex-grow: 1;
-}
-
-.navbar-collapse {
-  width: fit-content;
-  flex-grow: 0;
-  flex-basis: unset;
-}
-
 @media screen and (max-width: 830px) {
   body {
-    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(/MobileBG.png);
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(/MobileBG.png);
     background-position: top;
     background-size: contain;
     background-repeat: no-repeat;
     background-color: #0b1d26;
   }
+  .navbar-nav {
+    flex-grow: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #0b1d26;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: fit-content;
+  }
+  .navbar-nav .navbar-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+    padding: 5rem;
+  }
   .hero {
     min-height: fit-content;
     flex-wrap: wrap;
   }
-  .hero-content {
-    order: 1;
+  .hero .hero-content {
+    gap: 2rem !important;
   }
   .hero > .scroller {
     display: none;
@@ -584,9 +606,6 @@ body {
   }
   .nav-account-text {
     display: none;
-  }
-  .navbar-nav {
-    flex-grow: 0;
   }
 }
 
