@@ -1,0 +1,40 @@
+class CounterComponent extends HTMLElement {
+    constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+    }
+
+    connectedCallback() {
+        this.render();
+    }
+
+    render() {
+        this.shadowRoot.innerHTML = `
+            <div>
+                <h2>Counter: <span id="counterValue">0</span></h2>
+                <button id="increment">Increment</button>
+                <button id="decrement">Decrement</button>
+            </div>
+        `;
+
+        this.counter = this.shadowRoot.querySelector('#counterValue');
+        this.incrementButton = this.shadowRoot.querySelector('#increment');
+        this.decrementButton = this.shadowRoot.querySelector('#decrement');
+
+        this.incrementButton.addEventListener('click', this.increment.bind(this));
+        this.decrementButton.addEventListener('click', this.decrement.bind(this));
+    }
+
+    increment() {
+        let currentValue = parseInt(this.counter.textContent);
+        this.counter.textContent = currentValue + 1;
+    }
+
+    decrement() {
+        let currentValue = parseInt(this.counter.textContent);
+        this.counter.textContent = currentValue - 1;
+    }
+}
+
+// Define the custom element
+customElements.define('counter-component', CounterComponent);
